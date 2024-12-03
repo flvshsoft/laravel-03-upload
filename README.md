@@ -17,7 +17,7 @@ php artisan migrate
 
 
 php artisan make:controller HomeController
-
+php artisan make:controller MenuController
 
 
 
