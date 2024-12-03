@@ -12,7 +12,7 @@ git push -u origin main
 
 cp .env.example .env
 php artisan key:generate
-
+php artisan migrate
 
 
 
