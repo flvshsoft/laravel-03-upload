@@ -10,6 +10,8 @@ git remote add origin https://github.com/flvshsoft/laravel-01-install.git
 git push -u origin main
 
 
+cp .env.example .env
+php artisan key:generate
 
 
 
