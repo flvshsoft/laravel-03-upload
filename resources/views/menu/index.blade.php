@@ -75,15 +75,17 @@
         <div class="container">
             <h2 class="text-center">Produk Kami</h2>
             <div class="row mt-4">
+
+                @foreach ($menus as $menu)
                 <!-- Product 1 -->
                 <div class="col-md-4">
                     <div class="card">
                         <img src="https://i.pinimg.com/736x/06/83/a1/0683a180a964320d3f81d6840fde1771.jpg"
                             class="card-img-top menu-kopi" alt="Kopi Arabica">
                         <div class="card-body">
-                            <h5 class="card-title">Kopi Arabica</h5>
+                            <h5 class="card-title">{{ $menu->nama_menu }}</h5>
                             <p class="card-text">Aroma khas dengan rasa lembut dan sedikit asam.</p>
-                            <h2 class="" style="color:#654520">23k</h2>
+                            <h2 class="" style="color:#654520">{{ number_format($menu->harga) }}</h2>
                             <a href="#" class="btn btn-warning text-white" style="background: #825B32">
                                 <img src="{{ asset('buy.png') }}" alt="icon" width="25px">
                                 Beli Sekarang
@@ -91,36 +93,39 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
                 <!-- Product 2 -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="card">
                         <img src="https://i.pinimg.com/736x/b1/57/d4/b157d4f8535af7de3c06b1bedb6db8bb.jpg"
                             class="card-img-top menu-kopi" alt="Kopi Robusta">
                         <div class="card-body">
                             <h5 class="card-title">Kopi Robusta</h5>
-                            <p class="card-text">Rasa kuat dan sedikit pahit, cocok untuk pecinta kopi pekat.</p> <h2 class="" style="color:#654520">27k</h2>
+                            <p class="card-text">Rasa kuat dan sedikit pahit, cocok untuk pecinta kopi pekat.</p>
+                            <h2 class="" style="color:#654520">27k</h2>
                             <a href="#" class="btn btn-warning text-white" style="background: #825B32">
                                 <img src="{{ asset('buy.png') }}" alt="icon" width="25px">
                                 Beli Sekarang
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Product 3 -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="card">
                         <img src="https://i.pinimg.com/736x/79/0c/48/790c483b59671515930c81a935be77e4.jpg"
                             class="card-img-top menu-kopi" alt="Kopi Luwak">
                         <div class="card-body">
                             <h5 class="card-title">Kopi Luwak</h5>
-                            <p class="card-text">Kopi eksotis dengan proses alami oleh luwak.</p> <h2 class="" style="color:#654520">28k</h2>
+                            <p class="card-text">Kopi eksotis dengan proses alami oleh luwak.</p>
+                            <h2 class="" style="color:#654520">28k</h2>
                             <a href="#" class="btn btn-warning text-white" style="background: #825B32">
                                 <img src="{{ asset('buy.png') }}" alt="icon" width="25px">
                                 Beli Sekarang
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

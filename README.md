@@ -18,9 +18,24 @@ php artisan migrate
 
 php artisan make:controller HomeController
 php artisan make:controller MenuController
+php artisan make:controller AuthController
+php artisan make:controller Admin/DashboardController
+php artisan make:controller Admin/MenuController
 
 
 
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+
+php artisan migrate
+php artisan make:migration create_menus_table
+
+php artisan make:model Menu
 
 
 
