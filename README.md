@@ -37,6 +37,7 @@ php artisan make:migration create_menus_table
 
 php artisan make:model Menu
 
+php artisan storage:link
 
 
 

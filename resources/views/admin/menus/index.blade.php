@@ -20,7 +20,11 @@
                 <td>{{ $menu->id }}</td>
                 <td>{{ $menu->nama_menu }}</td>
                 <td>{{ $menu->harga }}</td>
-                <td>{{ $menu->foto }}</td>
+                <td>
+                    @if($menu->foto)
+                    <img src="{{ asset('storage/' . $menu->foto) }}" alt="Example Image" width="50px"/>
+                    @endif
+                </td>
                 <td>
                     <a href="{{ route('menus.edit', $menu) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('menus.destroy', $menu) }}" method="POST" class="d-inline">

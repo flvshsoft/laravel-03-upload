@@ -29,9 +29,9 @@
     </div>
     @endif
 
-    
+
     <h1>Create New Menu</h1>
-    <form action="{{ route('menus.store') }}" method="POST">
+    <form action="{{ route('menus.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nama Menu</label>
@@ -43,7 +43,7 @@
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
-            <input type="text" name="foto" id="foto" class="form-control">
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
