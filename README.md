@@ -34,12 +34,18 @@ DB_PASSWORD=
 
 php artisan migrate
 php artisan make:migration create_menus_table
-
 php artisan make:model Menu
 
+<!-- Upload File -->
 php artisan storage:link
 
-
+<!-- Menambahkan halaman pesan saran -->
+<!-- 1 membuat migrate -->
+php artisan make:migration create_pesan_saran_table
+<!-- 2 menjalankan migrate -->
+php artisan migrate
+<!-- 3 membuat model -->
+php artisan make:model PesanSaran
 
 
 
