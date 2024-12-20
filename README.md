@@ -37,7 +37,9 @@ php artisan make:migration create_menus_table
 php artisan make:model Menu
 
 <!-- Upload File -->
-php artisan storage:link
+1. Ubah /view/admin/menu/create.blade.php
+2. Ubah /app/Http/Controllers/admin/MenuController.php di bagian store
+3. php artisan storage:link
 
 <!-- Menambahkan halaman pesan saran -->
 <!-- 1 membuat migrate -->

@@ -80,7 +80,7 @@
                 <!-- Product 1 -->
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://i.pinimg.com/736x/06/83/a1/0683a180a964320d3f81d6840fde1771.jpg"
+                        <img src="{{ asset('storage/' . $menu->foto) }}"
                             class="card-img-top menu-kopi" alt="Kopi Arabica">
                         <div class="card-body">
                             <h5 class="card-title">{{ $menu->nama_menu }}</h5>
