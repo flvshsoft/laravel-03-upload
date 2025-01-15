@@ -8,8 +8,12 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/kontak', [App\Http\Controllers\HomeController::class, 'kontak'])->name('kontak');
-Route::get('/menu', [App\Http\Controllers\MenuController::class, 'index'])->name('menu');
+Route::get('/menu', [ App\Http\Controllers\MenuController::class, 'index'])->name('menu');
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::get('/keranjang', [ App\Http\Controllers\KeranjangController::class, 'index'])->name('keranjang.index');
+Route::get('/keranjang-store/{id}', [ App\Http\Controllers\KeranjangController::class, 'store'])->name('keranjang.store');
+Route::get('/keranjang-tambah/{id}', [App\Http\Controllers\KeranjangController::class, 'keranjang_tambah'])->name( 'keranjang.tambah');
+Route::get('/keranjang-kurang/{id}', [App\Http\Controllers\KeranjangController::class, 'keranjang_kurang'])->name('keranjang.kurang');
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');

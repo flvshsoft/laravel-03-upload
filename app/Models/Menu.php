@@ -14,4 +14,10 @@ class Menu extends Model
         'harga',
         'foto',
     ];
+
+    // Relasi ke Keranjang
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'id_menu', 'id');
+    }
 }
