@@ -9,11 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: "Times New Roman", serif;
+            background: #FFE2E2;
+            color: #DA498D;
         }
 
         .hero {
-            background-image: url('https://i.pinimg.com/originals/b3/f9/ec/b3f9ec10537a01aaeca68cecf2bd1a81.gif');
+            /* background-image: url('https://i.pinimg.com/originals/b3/f9/ec/b3f9ec10537a01aaeca68cecf2bd1a81.gif'); */
             background-size: cover;
             background-position: center;
             color: white;
@@ -32,14 +34,21 @@
         .hero p {
             font-size: 1.2rem;
         }
+
+        @font-face {
+            font-family: 'gastroline';
+            src: url('{{ asset('fonts/gastroline.otf') }}') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg" style="background: #FFE2E2;">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('login') }}">UMKM Kopi</a>
+            <a class="navbar-brand" href="{{ route('login') }}" style="font-family: 'gastroline';color:#69247C;font-size:30px;">Umkm Kopi</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,25 +69,42 @@
         </div>
     </nav>
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <h1>Nikmati Kopi Terbaik dari UMKM Lokal</h1>
-            <p>Rasakan aroma dan cita rasa kopi pilihan langsung dari petani lokal.</p>
-            <a href="{{ route('menu') }}" class="btn btn-primary btn-lg">Lihat Menu</a>
+    <header class="hero mt-4">
+        <div class="row mt-4">
+            <div class="col-7 text-start">
+                <h1 style="color: #69247C;margin-top:130px;">Nikmati Kopi Terbaik</h1>
+                <h1 style="color: #69247C;font-family: 'gastroline'"> Umkm Lokal</h1>
+                <p style=" color: #69247C">Rasakan aroma dan cita rasa kopi pilihan langsung dari petani lokal.</p>
+                <a href="{{ route('menu') }}" class="btn btn-lg" style="background: #69247C; color:white">Lihat Menu</a>
+            </div>
+            <div class="col-5 p-4">
+                <img src="https://i.pinimg.com/736x/7c/0d/ae/7c0dae07c7c08eb84dee8b3d89c07106.jpg" alt="hero"
+                    width="100%" style="border-radius: 50%;">
+            </div>
         </div>
     </header>
 
     <!-- About Section -->
     <section id="about" class="py-5">
         <div class="container">
-            <h2 class="text-center">Tentang Kami</h2>
-            <p class="text-center text-muted">Kami adalah UMKM yang berkomitmen untuk menyajikan kopi terbaik dari
-                petani lokal dengan proses yang ramah lingkungan.</p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="https://i.pinimg.com/736x/7c/0d/ae/7c0dae07c7c08eb84dee8b3d89c07106.jpg" alt="hero"
+                        width="100%" style="border-radius: 50%;">
+                </div>
+                <div class="col-8">
+                    <h2 class="text-center" style="margin-top:10%;">Tentang Kami</h2>
+                    <p class="text-center text-muted">Kami adalah UMKM yang berkomitmen untuk menyajikan kopi terbaik
+                        dari
+                        petani lokal dengan proses yang ramah lingkungan.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="py-5 bg-light">
+    <section id="products" class="py-5">
         <div class="container">
             <h2 class="text-center">Produk Kami</h2>
             <div class="row mt-4">
@@ -129,36 +155,36 @@
             <h2>Pesan Saran</h2>
 
             @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
 
             <!-- Alert for Success -->
             @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endif
 
             <!-- Alert for Error -->
             @if (session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endif
-            
+
             <form action="{{ route('pesan-saran.store_user') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control" required autofocus>
+                    <input type="text" name="nama" id="nama" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>

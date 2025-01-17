@@ -66,8 +66,12 @@ class KeranjangController extends Controller
         try {
             $modelKeranjang = Keranjang::find($id);
             if ($modelKeranjang) {
-                $modelKeranjang->qty = $modelKeranjang->qty - 1; // Store the file path in the database
-                $modelKeranjang->save();
+                if($modelKeranjang->qty <= 1){
+                    $modelKeranjang->delete();
+                }else{
+                    $modelKeranjang->qty = $modelKeranjang->qty - 1; // Store the file path in the database
+                    $modelKeranjang->save();
+                }
                 return redirect()->route('keranjang.index')->with('success', 'Menu created successfully.');
             } else {
                 // Menu tidak ditemukan

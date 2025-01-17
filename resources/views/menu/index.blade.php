@@ -34,7 +34,7 @@
         }
 
         .menu-kopi {
-            height: 400px;
+            height: 200px;
             /* Sesuaikan tinggi gambar */
             object-fit: cover;
             /* Gambar akan di-crop agar tetap proporsional */
@@ -86,8 +86,8 @@
 
                 @foreach ($menus as $menu)
                 <!-- Product 1 -->
-                <div class="col-md-4">
-                    <div class="card">
+                <div class="col-md-3">
+                    <div class="card mb-4" style="border-radius: 20px;">
                         <img src="{{ asset('storage/' . $menu->foto) }}"
                             class="card-img-top menu-kopi" alt="Kopi Arabica">
                         <div class="card-body">

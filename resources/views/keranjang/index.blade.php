@@ -85,6 +85,10 @@
             <div class="row mt-4">
                 <div class="col-6">
 
+                    @php
+                    $total = 0;
+                    @endphp
+
                     @foreach ($model as $value)
                     <!-- Product 1 -->
                     <div class="col-12 p-2">
@@ -92,9 +96,10 @@
                             <div class="card-body row">
                                 <div class="col-6">
                                     <h5 class="card-title">{{ $value->menu->nama_menu }}</h5>
-                                </div>
-                                <div class="col-3">
-                                    <h3 class="" style="color:#654520">{{ number_format($value->harga) }}</h3>
+
+                                    <div class="col-12">
+                                        <h5 class="" style="color:#654520">{{ number_format($value->harga) }}</h5>
+                                    </div>
                                 </div>
                                 <div class="col-1">
                                     <a href="{{ route('keranjang.kurang', $value->id) }}" class="btn btn-danger text-white">
@@ -111,14 +116,32 @@
                                         +
                                     </a>
                                 </div>
+                                <div class="col-3">
+                                    <h3 class="" style="color:#654520">{{ number_format($value->harga * $value->qty) }}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    @php
+                    $total += $value->harga * $value->qty; // Menambahkan ke total
+                    @endphp
                     @endforeach
                 </div>
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <h5 class="card-title">
+                                        Total
+                                    </h5>
+
+                                </div>
+                                <div class="col-6">
+                                    <h3>{{ number_format($total) }}</h3>
+                                </div>
+                            </div>
                             <div class="row">
 
                                 <div class="col-6">
@@ -154,6 +177,7 @@
                                         </div>
                                         <div class="modal-body text-center">
                                             <img src="https://i.pinimg.com/originals/90/13/f7/9013f7b5eb6db0f41f4fd51d989491e7.gif" alt="" width="100%">
+                                            <h3 class="mt-4">{{ number_format($total) }}</h3>
                                             <p class="mt-3">Pesanan berhasil dengan nomor #{{ date('YmdHis') }}</p>
                                         </div>
                                         <div class="modal-footer">
